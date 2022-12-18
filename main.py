@@ -67,6 +67,7 @@ display_board()
 
 #While method that loops over each players turn until someone wins
 while winGame == False:
+  #Updates the board for player 1's turn
   if ctr % 2 == 0:
     print("Player 1's turn")
   else:
@@ -86,6 +87,7 @@ while winGame == False:
       column = int(column)
       board[row][column] = p1
   else:
+    #Updates the board for player 2's turn
     if board[row][column] == '-':
       board[row][column] = p2
     else:
@@ -95,15 +97,20 @@ while winGame == False:
       column = input("Choose a column(up-to-down 0-2): ")
       column = int(column)
       board[row][column] = p2
+    
+  #Checks the methods to see if there has been a winner
   check_rows()
   check_columns()
   check_diagonal1()
   check_diagonal2()
   ctr = ctr+1
   display_board()
+  
+  #Checks to look for ties
   if(ctr == 11):
     winGame = True;
 
+#Game Results
 if ctr == 11:
   print("It's a Tie!")
 elif ctr % 2 == 0:
